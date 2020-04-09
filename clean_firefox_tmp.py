@@ -33,7 +33,6 @@ def kill_firefox():
         pass
     
 def clean_firefox(user_name):
-    kill_firefox()
     profiles_list = get_allprofiles(user_name)
     cleaning_folders_list = make_cleaning_list(profiles_list)
     for folder in cleaning_folders_list:
@@ -53,6 +52,7 @@ def clean_firefox(user_name):
 
 
 def main():
+    kill_firefox()
     clean_firefox('Max')
 
 if __name__ == "__main__":
