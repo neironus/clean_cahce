@@ -12,7 +12,6 @@ def kill_chrome():
     subprocess.call('taskkill /F /IM Chrome.exe', shell=False)
     
 def clean_chrome(user_name):
-    kill_chrome()
     cache_main    = f'C:\\Users\\{user_name}\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\*'
     cache_js = f'C:\\Users\\{user_name}\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Code Cache\\js\\*'
     caches = [cache_main, cache_js]
@@ -31,6 +30,7 @@ def clean_chrome(user_name):
                     print(f"Error while deleting folder : {folder}")
 
 def main():
+    kill_chrome()
     clean_chrome('Max')
 
 if __name__ == "__main__":
