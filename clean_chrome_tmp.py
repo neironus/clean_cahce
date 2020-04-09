@@ -2,17 +2,20 @@ import os
 import glob
 import subprocess
 
+
 def get_allprofiles(user):
     profiles_path = f'C:\\Users\\{user}\\AppData\\Local\\Mozilla\\chrome\\Profiles\\*'
     profiles_list = glob.glob(f'{profiles_path}')
     return profiles_list
 
+
 def kill_chrome():
-    #kill all chrome process
+    # kill all chrome process
     subprocess.call('taskkill /F /IM Chrome.exe', shell=False)
-    
+
+
 def clean_chrome(user_name):
-    cache_main    = f'C:\\Users\\{user_name}\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\*'
+    cache_main = f'C:\\Users\\{user_name}\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\*'
     cache_js = f'C:\\Users\\{user_name}\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Code Cache\\js\\*'
     caches = [cache_main, cache_js]
     for cache in caches:
@@ -29,9 +32,11 @@ def clean_chrome(user_name):
                 except (NotADirectoryError, OSError):
                     print(f"Error while deleting folder : {folder}")
 
+
 def main():
     kill_chrome()
     clean_chrome('Max')
+
 
 if __name__ == "__main__":
     main()

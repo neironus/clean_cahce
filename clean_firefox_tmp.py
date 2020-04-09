@@ -3,17 +3,18 @@ import glob
 import subprocess
 
 
-
 def encode_string(string):
     try:
-        return string.encode(encoding='UTF-8',errors='strict').decode("cp1251")
+        return string.encode(encoding='UTF-8', errors='strict').decode("cp1251")
     except (UnicodeDecodeError, AttributeError):
-        return string 
+        return string
+
 
 def get_allprofiles(user):
     profiles_path = f'C:\\Users\\{user}\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\*'
     profiles_list = glob.glob(f'{profiles_path}')
     return profiles_list
+
 
 def make_cleaning_list(profiles_list):
     # Windows 10+
@@ -25,13 +26,15 @@ def make_cleaning_list(profiles_list):
         cleaning_list.append(profile + thumbnails)
     return cleaning_list
 
+
 def kill_firefox():
-    #kill all firefox process
+    # kill all firefox process
     try:
         subprocess.call('taskkill /F /IM firefox.exe', shell=False)
     except:
         pass
-    
+
+
 def clean_firefox(user_name):
     profiles_list = get_allprofiles(user_name)
     cleaning_folders_list = make_cleaning_list(profiles_list)
@@ -50,10 +53,10 @@ def clean_firefox(user_name):
                     print(f"Error while deleting folder : {folder}")
 
 
-
 def main():
     kill_firefox()
     clean_firefox('Max')
+
 
 if __name__ == "__main__":
     main()

@@ -1,7 +1,4 @@
 import os
-# import glob
-# import subprocess
-# import shutil
 from pathlib import Path
 
 files_extensions = ['*']
@@ -30,12 +27,6 @@ def clean_system_tmp():
                 print(f"Removed file - {file}")
             except:
                 print(f"Error while deleting file : {file}")
-                # folder = file
-                # try:
-                #     shutil.rmtree(folder, ignore_errors=True)
-                #     print(f"Removed folder - {folder}")
-                # except:
-                #     print(f"Error while deleting: {folder}")
 
 
 def main():
