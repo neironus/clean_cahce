@@ -1,26 +1,7 @@
 import os
 import glob
-import subprocess
-# import shutil
 from pathlib import Path
 
-
-def encode_string(string):
-    try:
-        return string.encode(encoding='UTF-8', errors='strict').decode("cp1251")
-    except (UnicodeDecodeError, AttributeError):
-        return string
-
-
-def kill_programs():
-    # logoff all users except Administrator
-    pass
-    # kill process
-    # subprocess.call('taskkill /F /IM firefox.exe', shell=False)
-    # subprocess.call('taskkill /F /IM Chrome.exe', shell=False)
-    # subprocess.call('taskkill /F /IM Viber.exe', shell=False)
-    # subprocess.call('taskkill /F /IM Skype.exe', shell=False)
-    # subprocess.call('taskkill /F /IM 1cv8.exe', shell=False)
 
 files_extensions = ['*_converted.*']
 
