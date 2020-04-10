@@ -14,11 +14,19 @@ def encode_string(string):
 
 
 def users_list():
+    """
+    Функция создает список пользователей которые есть в системе
+    и возвращает список
+    """
     entries = os.scandir('c:\\Users')
     return [encode_string(entry.name) for entry in entries]
 
 
 def clean_users_list(users_list):
+    """
+    Функция удаляет сервисных или других пользователей из списка.
+    Для исключени пользоватял нужно его добавить в users_exclusion    
+    """
     users_exclusion = ['Default', 'Default User',
                        'All Users', 'Public', 'admin', 'Administrator']
     cleaned_users_list = []

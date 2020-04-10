@@ -10,11 +10,17 @@ def get_allprofiles(user):
 
 
 def kill_chrome():
-    # kill all chrome process
+    """
+    kill all chrome process
+    """ 
     subprocess.call('taskkill /F /IM Chrome.exe', shell=False)
 
 
 def clean_chrome(user_name):
+    """
+    Функция принимает имя пользователя, подставляет в шаблон и чистит все файлы
+    в папках Cache и Code Cache\js профайла Google Chrome
+    """
     cache_main = f'C:\\Users\\{user_name}\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\*'
     cache_js = f'C:\\Users\\{user_name}\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Code Cache\\js\\*'
     caches = [cache_main, cache_js]

@@ -11,13 +11,19 @@ def encode_string(string):
 
 
 def get_allprofiles(user):
+    """
+    Функция создать и возвращает список профайлов Firefox у конкретного пользователя
+    """
     profiles_path = f'C:\\Users\\{user}\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\*'
     profiles_list = glob.glob(f'{profiles_path}')
     return profiles_list
 
 
 def make_cleaning_list(profiles_list):
-    # Windows 10+
+    """
+    Создает список папок на основе всех профайлов у конктерного пользователя
+    Возвращает списоу папок для поиска файлов
+    """
     cache = '\\cache2\\entries\\*'
     thumbnails = '\\thumbnails\\*'
     cleaning_list = []
@@ -28,7 +34,9 @@ def make_cleaning_list(profiles_list):
 
 
 def kill_firefox():
-    # kill all firefox process
+    """
+    kill all firefox process
+    """ 
     try:
         subprocess.call('taskkill /F /IM firefox.exe', shell=False)
     except:
@@ -36,6 +44,12 @@ def kill_firefox():
 
 
 def clean_firefox(user_name):
+    """
+    Функция чистит temp файлы из папок: 
+    cache = '\\cache2\\entries\\*'
+    thumbnails = '\\thumbnails\\*'
+    по всем профайлам пользователя
+    """
     profiles_list = get_allprofiles(user_name)
     cleaning_folders_list = make_cleaning_list(profiles_list)
     for folder in cleaning_folders_list:
